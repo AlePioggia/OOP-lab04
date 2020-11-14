@@ -15,7 +15,6 @@ public final class TestBank2 {
         }
     }
 
-    @SuppressWarnings("null")
 	public static void main(final String[] args) {
         final var usr1 = new AccountHolder("Mario", "Rossi", 1);
         final var usr2 = new AccountHolder("Luigi", "Bianchi", 2);

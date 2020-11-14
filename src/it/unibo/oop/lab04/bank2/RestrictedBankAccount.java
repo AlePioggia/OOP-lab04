@@ -12,7 +12,15 @@ public class RestrictedBankAccount extends AbstractBankAccount {
 	}
 	
 	protected boolean isWithdrawAllowed(double amount) {
-		return this.getBalance() > amount;
+		return this.getBalance() >= amount;
+	}
+	
+	public void withdraw(int usrID, double amount) {
+		var balance = this.getBalance();
+		if(this.getID() == usrID && this.isWithdrawAllowed(amount)) {
+    		balance -= amount;
+    		this.incTransactions();
+    	}
 	}
 	
 	protected double computeFee() {

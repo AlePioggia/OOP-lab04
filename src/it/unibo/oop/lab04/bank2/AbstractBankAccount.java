@@ -25,15 +25,16 @@ abstract class AbstractBankAccount implements BankAccount{
     }
     
 	public void computeManagementFees(int usrID) {
+		double fees = computeFee();
 		if (this.usrID == usrID) {
-            this.balance -= SimpleBankAccount.MANAGEMENT_FEE;
+            this.balance -= fees;
         }
 	}
 
     public void deposit(int usrID, double amount) {
     	if(this.usrID == usrID) {
     		this.balance += amount;
-    		this.nTransactions++;
+    		this.incTransactions();
     	}
     }
 
@@ -53,7 +54,7 @@ abstract class AbstractBankAccount implements BankAccount{
     public void withdraw(int usrID, double amount) {
     	if(this.usrID == usrID) {
     		this.balance -= amount;
-    		this.nTransactions++;	
+    		this.incTransactions();
     	}
     }
 
@@ -76,7 +77,7 @@ abstract class AbstractBankAccount implements BankAccount{
     protected void setBalance(final double amount) {
         this.balance = amount;
     }
-    
+     
     protected abstract boolean isWithdrawAllowed(double amount); 
     
     protected abstract double computeFee();

@@ -11,7 +11,7 @@ public class ClassicBankAccount extends AbstractBankAccount{
     }
 
 	protected boolean isWithdrawAllowed(double amount) {
-		return this.getBalance() > amount;
+		return this.getBalance() >= amount;
 	}
 
 	protected double computeFee() {
